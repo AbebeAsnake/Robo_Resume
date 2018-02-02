@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,7 +36,10 @@ public class HomeController {
         return "personform";
     }
     @PostMapping("/postp")
-    public  String processForm(Person person, BindingResult result){
+    public  String processForm(@Valid @ModelAttribute Person person, BindingResult result){
+        if(result.hasErrors()){
+            return "personform";
+        }
         personRepository.save(person);
         return "redirect:/";
     }
@@ -46,7 +50,10 @@ public class HomeController {
     }
 
     @PostMapping("/poste")
-    public  String processEdu(Education education, BindingResult result){
+    public  String processEdu(@Valid @ModelAttribute Education education, BindingResult result){
+        if(result.hasErrors()){
+            return "educationform";
+        }
         educationRepository.save(education);
         return "redirect:/";
     }
@@ -57,7 +64,10 @@ public class HomeController {
     }
 
     @PostMapping("/postw")
-    public  String processWe(WorkExperience workexperience, BindingResult result){
+    public  String processWorkExperience(@Valid @ModelAttribute WorkExperience workexperience, BindingResult result){
+        if(result.hasErrors()){
+            return "workexperienceform";
+        }
         workExperienceRepository.save(workexperience);
         return "redirect:/";
     }
@@ -68,7 +78,10 @@ public class HomeController {
     }
 
     @PostMapping("/posts")
-    public  String processSkills(Skills skills, BindingResult result){
+    public  String processSkills(@Valid @ModelAttribute Skills skills, BindingResult result){
+        if(result.hasErrors()){
+            return "skillsform";
+        }
         skillsRepository.save(skills);
         return "redirect:/";
     }

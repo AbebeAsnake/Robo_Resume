@@ -11,14 +11,17 @@
       method="post">
     <input type="hidden" th:field="*{id}"/>
     College Name<input type="text" th:field="*{collegeName}"/><br/>
-    <span th:if="${#fields.hasErrors('collegeName')}"></span><br/>
+    <span th:if="${#fields.hasErrors('collegeName')}"
+          th:errors="*{collegeName}"></span><br/>
     Level of education<input type="text" th:field="*{educationLevel}"/><br/>
-    <span th:if="${#fields.hasErrors('educationLevel')}"></span>
-    Graduation Date:<input type="text" th:field="*{graduationDate}"/><br/>
-    <span th:if="${#fields.hasErrors('graduationDate')}"></span>
+    <span th:if="${#fields.hasErrors('educationLevel')}"
+          th:errors="*{educationLevel}"></span>
+   Year of graduation:<input type="text" th:field="*{graduationDate}"/><br/>
+    <span th:if="${#fields.hasErrors('graduationDate')}"
+          th:errors="*{graduationDate}"></span>
     Field Of Study:<input type="text" th:field="*{fieldOfStudy}"/><br/>
-    <span th:if="${#fields.hasErrors('fieldOfStudy')}"></span>
-
+    <span th:if="${#fields.hasErrors('fieldOfStudy')}"
+          th:errors="*{fieldOfStudy}"></span>
 
     <input type="submit" value="Submit"/>
 </form>

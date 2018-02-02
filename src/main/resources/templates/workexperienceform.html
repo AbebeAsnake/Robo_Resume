@@ -10,16 +10,21 @@
       th:object="${workexperience}"
       method="post">
     <input type="hidden" th:field="*{id}"/>
-    Company Name<input type="text" th:field="*{companyName}"/><br/>
-    <span th:if="${#fields.hasErrors('companyName')}"></span><br/>
+   <label>Company Name</label> <input type="text" th:field="*{companyName}"/>
+    <span th:if="${#fields.hasErrors('companyName')}"
+          th:errors="*{companyName}"></span><br/>
     Start Date<input type="text" th:field="*{startDate}"/><br/>
-    <span th:if="${#fields.hasErrors('startDate')}"></span>
+    <span th:if="${#fields.hasErrors('startDate')}"
+          th:errors="*{startDate}"></span>
     End Date:<input type="text" th:field="*{endDate}"/><br/>
-    <span th:if="${#fields.hasErrors('endDate')}"></span>
+    <span th:if="${#fields.hasErrors('endDate')}"
+          th:errors="*{endDate}"></span>
     Position<input type="text" th:field="*{position}"/><br/>
-    <span th:if="${#fields.hasErrors('position')}"></span>
+    <span th:if="${#fields.hasErrors('position')}"
+          th:errors="*{position}"></span>
     Duties<input type="text" th:field="*{duties}"/><br/>
-    <span th:if="${#fields.hasErrors('duties')}"></span>
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span>
 
 
 

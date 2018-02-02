@@ -11,9 +11,11 @@
       method="post">
     <input type="hidden" th:field="*{id}"/>
     Skill<input type="text" th:field="*{skillType}"/><br/>
-    <span th:if="${#fields.hasErrors('skillType')}"></span><br/>
+    <span th:if="${#fields.hasErrors('skillType')}"
+          th:errors="*{skillType}"></span><br/>
     Rating<input type="text" th:field="*{rating}"/><br/>
-    <span th:if="${#fields.hasErrors('rating')}"></span>
+    <span th:if="${#fields.hasErrors('rating')}"
+          th:errors="*{rating}"></span>
 
     <input type="submit" value="Submit"/>
 </form>
