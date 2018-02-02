@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/poste}"
+      th:object="${education}"
+      method="post">
+    <input type="hidden" th:field="*{id}"/>
+    College Name<input type="text" th:field="*{collegeName}"/><br/>
+    <span th:if="${#fields.hasErrors('collegeName')}"></span><br/>
+    Level of education<input type="text" th:field="*{educationLevel}"/><br/>
+    <span th:if="${#fields.hasErrors('educationLevel')}"></span>
+    Graduation Date:<input type="text" th:field="*{graduationDate}"/><br/>
+    <span th:if="${#fields.hasErrors('graduationDate')}"></span>
+    Field Of Study:<input type="text" th:field="*{fieldOfStudy}"/><br/>
+    <span th:if="${#fields.hasErrors('fieldOfStudy')}"></span>
+
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

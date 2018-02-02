@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/postw}"
+      th:object="${workexperience}"
+      method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Company Name<input type="text" th:field="*{companyName}"/><br/>
+    <span th:if="${#fields.hasErrors('companyName')}"></span><br/>
+    Start Date<input type="text" th:field="*{startDate}"/><br/>
+    <span th:if="${#fields.hasErrors('startDate')}"></span>
+    End Date:<input type="text" th:field="*{endDate}"/><br/>
+    <span th:if="${#fields.hasErrors('endDate')}"></span>
+    Position<input type="text" th:field="*{position}"/><br/>
+    <span th:if="${#fields.hasErrors('position')}"></span>
+    Duties<input type="text" th:field="*{duties}"/><br/>
+    <span th:if="${#fields.hasErrors('duties')}"></span>
+
+
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

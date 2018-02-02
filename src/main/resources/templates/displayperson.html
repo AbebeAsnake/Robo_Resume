@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<a href="/postp">Add person</a><br/>
+<a href="/poste">Add Education</a><br/>
+<a href="/postw">Add work Experience</a><br/>
+<a href="/posts">Add Skill</a><br/>
+
+<div th:each="person : ${person}">
+    <span th:text="${person.firstName}"></span>
+    <span th:text="${person.lastName}"></span><br/>
+    <p th:text="${person.email}"></p>
+</div>
+
+Education Information
+<ul th:each="education : ${education}" >
+
+    <li th:inline="text">[[${education.educationLevel}]] in [[${education.fieldOfStudy}]]</li>
+    <li th:inline="text">[[${education.collegeName}]], [[${education.graduationDate}]]</li>
+
+</ul>
+
+Work Experience
+<ul  th:each="workexprience : ${workexprience}">
+
+    <li th:inline="text">[[${workexprience.position}]]</li>
+    <li th:inline="text">[[${workexprience.companyName}]] <br/>
+        [[${workexprience.startDate}]]-[[${workexprience.endDate}]]</li>
+    <li th:inline="text">Duties: [[${workexprience.duties}]]</li>
+
+</ul>
+Skills
+<ul   th:each="skills : ${skills}"  >
+
+    <li th:inline="text">[[${skills.skillType}]] --rating-- [[${skills.rating}]]</li>
+
+</ul>
+
+</body>
+</html>
