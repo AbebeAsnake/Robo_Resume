@@ -27,7 +27,7 @@
     <span th:text="${person.lastName}"></span><br/>
     <p th:text="${person.email}"></p>
 </div>
-
+<div class="person" th:unless="${#lists.isEmpty(person)}">
 <h4>Education Information</h4>
 <ul th:each="education : ${education}">
 
@@ -50,7 +50,7 @@
 
     <li th:inline="text">[[${skills.skillType}]] --rating-- [[${skills.rating}]]</li>
 
-</ul>
+</ul></div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
