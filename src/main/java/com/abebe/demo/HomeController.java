@@ -11,6 +11,8 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
+    UserService userService;
+    @Autowired
     PersonRepository personRepository;
     @Autowired
     EducationRepository educationRepository;
@@ -18,7 +20,8 @@ public class HomeController {
     WorkExperienceRepository workExperienceRepository;
     @Autowired
     SkillsRepository skillsRepository;
-    @RequestMapping("")
+
+    @RequestMapping("/")
     public String addResume(Model model){
         model.addAttribute("person",personRepository.findAll());
         model.addAttribute("skills",skillsRepository.findAll());
@@ -29,11 +32,11 @@ public class HomeController {
 
     @GetMapping("/postp")
     public  String postProcess(Model model){
-        model.addAttribute("person",new Person());
+        model.addAttribute("person",new References());
         return "personform";
     }
     @PostMapping("/postp")
-    public  String processForm(@Valid @ModelAttribute Person person, BindingResult result){
+    public  String processForm(@Valid @ModelAttribute References person, BindingResult result){
         if(result.hasErrors()){
             return "personform";
         }
@@ -81,6 +84,17 @@ public class HomeController {
         }
         skillsRepository.save(skills);
         return "redirect:/";
+    }
+    @GetMapping("/register")
+    public String showRegistration(Model model){
+        model.addAttribute("registration", new User());
+        return "registration";
+
+    }
+
+    @RequestMapping("/login")
+    public String showLogin(Model model){
+        return "login";
     }
 
 

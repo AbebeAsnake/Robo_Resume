@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-
+<div th:replace="base :: navbar"></div>
 <form action="#"
       th:action="@{/postp}"
       th:object="${person}"
       class="form-horizontal" method="POST">
     <fieldset>
+        <legend>Contact Information</legend>
         <div id="legend">
             <legend class="">Register</legend>
         </div>
@@ -48,8 +50,58 @@
                 <p class="help-block">Please provide your E-mail</p>
             </div>
         </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="phoneNumber">Phone Number </label>
+            <div class="controls">
+                <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('phoneNumber')}"
+                      th:errors="*{phoneNumber}"></span>
+                <p class="help-block">Numbers</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">Address </label>
+            <div class="controls">
+                <input type="text" th:field="*{address}" id="address" name="address" placeholder="address" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('address')}"
+                      th:errors="*{address}"></span>
+                <p class="help-block">Numbers</p>
+            </div>
+        </div>
 
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">City </label>
+            <div class="controls">
+                <input type="text" th:field="*{city}" id="city" name="city" placeholder="city" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('city')}"
+                      th:errors="*{city}"></span>
+                <p class="help-block"> Numbers</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">Zip Code </label>
+            <div class="controls">
+                <input type="text" th:field="*{zipCode}" id="zipCode" name="city" placeholder="zipcode" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('zipCode')}"
+                      th:errors="*{zipCode}"></span>
+                <p class="help-block">Numbers</p>
+            </div>
+        </div>
 
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="username">Country </label>
+            <div class="controls">
+                <input type="text" th:field="*{country}" id="country" name="address" placeholder="country" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('country')}"
+                      th:errors="*{country}"></span>
+                <p class="help-block">Numbers</p>
+            </div>
+        </div>
         <div class="control-group">
             <!-- Button -->
             <div class="controls">
@@ -59,7 +111,8 @@
     </fieldset>
 </form>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
