@@ -8,6 +8,12 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
+<ul th:each="summarys : ${summaryform}">
+
+    <li th:inline="text">[[${summarys.summary}]] </li>
+
+
+</ul>
 <form action="#" th:action="@{/summary}" th:object="${summarys}" method="post">
     <div class="control-group">
         <!-- Username -->

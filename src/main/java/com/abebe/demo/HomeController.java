@@ -28,16 +28,25 @@ public class HomeController {
     CoverLetterRepository coverLetterRepository;
     @RequestMapping("/")
     public String addResume(Model model){
+
+        return "index";
+    }
+    @RequestMapping("/displayresume")
+    public String DiplayResume(Model model){
         model.addAttribute("person",personRepository.findAll());
         model.addAttribute("skills",skillsRepository.findAll());
         model.addAttribute("education", educationRepository.findAll());
         model.addAttribute("workexprience", workExperienceRepository.findAll());
+        model.addAttribute("reference", referencesRepository.findAll());
+        model.addAttribute("summary", summaryRepository.findAll());
+
         return "displayperson";
     }
 
     @GetMapping("/postp")
     public  String postProcess(Model model){
         model.addAttribute("person",new Applicant());
+        model.addAttribute("personforms",personRepository.findAll());
         return "personform";
     }
     @PostMapping("/postp")
@@ -51,6 +60,7 @@ public class HomeController {
     @GetMapping("/poste")
     public  String postProcesseduForm(Model model){
         model.addAttribute("education",new Education());
+        model.addAttribute("educationform", educationRepository.findAll());
         return "educationform";
     }
 
@@ -65,20 +75,24 @@ public class HomeController {
     @GetMapping("/postw")
     public  String postProcesseWeForm(Model model){
         model.addAttribute("workexperience",new WorkExperience());
+        model.addAttribute("workexprience", workExperienceRepository.findAll());
         return "workexperienceform";
     }
 
     @PostMapping("/postw")
-    public  String processWorkExperience(@Valid @ModelAttribute WorkExperience workexperience, BindingResult result){
+    public  String processWorkExperience(@Valid @ModelAttribute WorkExperience workexperience, BindingResult result, Model model){
         if(result.hasErrors()){
             return "workexperienceform";
         }
         workExperienceRepository.save(workexperience);
+
         return "redirect:/";
     }
     @GetMapping("/posts")
     public  String postProcesseSkills(Model model){
         model.addAttribute("skills",new Skills());
+        model.addAttribute("skillsform", skillsRepository.findAll());
+
         return "skillsform";
     }
 
@@ -103,7 +117,12 @@ public class HomeController {
     }
     @GetMapping("/refernce")
     public  String postReference(Model model){
+
         model.addAttribute("reference",new References());
+        model.addAttribute("referenceform", referencesRepository.findAll());
+
+
+
         return "references";
     }
 
@@ -119,6 +138,8 @@ public class HomeController {
     @GetMapping("/summary")
     public  String postSummery(Model model){
         model.addAttribute("summarys", new Summarys());
+        model.addAttribute("summaryform", summaryRepository.findAll());
+
         return "summary";
     }
 
@@ -142,6 +163,77 @@ public class HomeController {
             return "coverletter";
         }
         coverLetterRepository.save(coverLetter);
+        return "redirect:/";
+    }
+
+
+    @RequestMapping("/register")
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model){
+
+        model.addAttribute("user", user);
+
+        if(result.hasErrors()){
+            return "registration";
+        }
+
+        userService.saveUser(user);
+        model.addAttribute("message", "User account successfully created");
+
+        return "redirect:/";
+
+    }
+    @RequestMapping("update/{id}")
+    public String updatePersonInfo(@PathVariable("id") long id, Model model){
+        model.addAttribute("person", personRepository.findOne(id));
+        return "personform";
+    }
+    @RequestMapping("/delete/{id}")
+    public String delPersonInfo(@PathVariable("id") long id){
+        personRepository.delete(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("updateE/{id}")
+    public String updateEducation(@PathVariable("id") long id, Model model){
+        model.addAttribute("education", educationRepository.findOne(id));
+        return "educationform";
+    }
+    @RequestMapping("/deleteE/{id}")
+    public String deleteEducation(@PathVariable("id") long id){
+        educationRepository.delete(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("updateS/{id}")
+    public String updateSkills(@PathVariable("id") long id, Model model){
+        model.addAttribute("skills", skillsRepository.findOne(id));
+        return "skillsform";
+    }
+    @RequestMapping("/deleteS/{id}")
+    public String deleteSkills(@PathVariable("id") long id){
+        skillsRepository.delete(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("updateR/{id}")
+    public String updateReference(@PathVariable("id") long id, Model model){
+        model.addAttribute("reference", referencesRepository.findOne(id));
+        return "references";
+    }
+    @RequestMapping("/deleteR/{id}")
+    public String deleteReference(@PathVariable("id") long id){
+        referencesRepository.delete(id);
+        return "redirect:/";
+    }
+
+    @RequestMapping("updateWE/{id}")
+    public String updateWorkExperience(@PathVariable("id") long id, Model model){
+        model.addAttribute("workexperience", workExperienceRepository.findOne(id));
+        return "workexperienceform";
+    }
+    @RequestMapping("/deleteWE/{id}")
+    public String deleteWorkExperience(@PathVariable("id") long id){
+        workExperienceRepository.delete(id);
         return "redirect:/";
     }
 

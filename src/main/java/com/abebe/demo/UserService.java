@@ -27,15 +27,18 @@ public class UserService {
     }
     public Role findByRole(String role){return  roleRepository.findByRole(role);}
 
+
     public void saveUser(User user){
         // user.addRole(roleRepository.findByRole("USER"));
-        user.setRoles(Arrays.asList(roleRepository.findByRole("ADMIN")));
+
+        user.setRoles(Arrays.asList(roleRepository.findByRole("USER")));
+
         user.setEnabled(true);
 
         userRepository.save(user);
     }
     public void saveAdmin(User user){
-        user.setRoles(Arrays.asList(roleRepository.findByRole("USER")));
+        user.setRoles(Arrays.asList(roleRepository.findByRole("ADMIN")));
         user.setEnabled(true);
         userRepository.save(user);
     }

@@ -8,16 +8,41 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
+<ul th:each="person : ${personforms}">
+
+    <li th:inline="text">[[${person.firstName}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.lastName}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.phoneNumber}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.email}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.address}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.city}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.state}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.country}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.zipCode}]] <br/>
+    </li>
+    <li> <a th:href="@{/update/{id}(id=${person.id})}">Update</a></li>
+    <li> <a th:href="@{/delete/{id}(id=${person.id})}">Delete</a></li>
+
+</ul>
 <form action="#"
       th:action="@{/postp}"
       th:object="${person}"
       class="form-horizontal" method="POST">
     <fieldset>
-        <legend>Contact Information</legend>
+
         <div id="legend">
-            <legend class="">Register</legend>
+            <legend class="">Contact Information</legend>
         </div>
         <div class="control-group">
+            <input type="hidden" th:field="*{id}"/>
             <!-- Username -->
             <label class="control-label"  for="username">First Name </label>
             <div class="controls">

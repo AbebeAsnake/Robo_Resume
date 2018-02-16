@@ -8,6 +8,15 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
+<ul th:each="educations : ${educationform}">
+
+    <li th:inline="text">[[${educations.educationLevel}]] in [[${educations.fieldOfStudy}]]<br/>
+        [[${educations.collegeName}]], [[${educations.graduationDate}]]</li>
+    <li> <a th:href="@{/updateE/{id}(id=${educations.id})}">Update</a></li>
+    <li> <a th:href="@{/deleteE/{id}(id=${educations.id})}">Delete</a></li>
+
+
+</ul>
 <form action="#"
       th:action="@{/poste}"
       th:object="${education}"

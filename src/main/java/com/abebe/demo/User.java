@@ -21,18 +21,25 @@ public class User {
     private boolean enabled;
     @Column(name = "username")
     private String userName;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String userName) {
+
+
+
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String userName){
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+
         this.enabled = enabled;
+
         this.userName = userName;
+
     }
 
     public User() {

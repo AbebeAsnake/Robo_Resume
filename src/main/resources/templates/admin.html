@@ -20,32 +20,32 @@
     <ul th:each="summarys : ${summary}">
 
         <li th:inline="text">[[${summarys.summary}]] <br/>
-          </li>
+        </li>
 
     </ul>
-<h4>Education Information</h4>
-<ul th:each="education : ${education}">
+    <h4>Education Information</h4>
+    <ul th:each="education : ${education}">
 
-    <li th:inline="text">[[${education.educationLevel}]] in [[${education.fieldOfStudy}]]<br/>
-    [[${education.collegeName}]], [[${education.graduationDate}]]</li>
+        <li th:inline="text">[[${education.educationLevel}]] in [[${education.fieldOfStudy}]]<br/>
+            [[${education.collegeName}]], [[${education.graduationDate}]]</li>
 
-</ul>
+    </ul>
 
-<h4>Work Experience</h4>
-<ul  th:each="workexprience : ${workexprience}">
+    <h4>Work Experience</h4>
+    <ul  th:each="workexprience : ${workexprience}">
 
-    <li th:inline="text">[[${workexprience.position}]]  at
-    [[${workexprience.companyName}]] <br/>
-        [[${workexprience.startDate}]]-[[${workexprience.endDate}]]<br/>
-   Duties: [[${workexprience.duties}]]</li>
+        <li th:inline="text">[[${workexprience.position}]]  at
+            [[${workexprience.companyName}]] <br/>
+            [[${workexprience.startDate}]]-[[${workexprience.endDate}]]<br/>
+            Duties: [[${workexprience.duties}]]</li>
 
-</ul>
-<h4>Skills</h4>
-<ul   th:each="skills : ${skills}">
+    </ul>
+    <h4>Skills</h4>
+    <ul   th:each="skills : ${skills}">
 
-    <li th:inline="text">[[${skills.skillType}]] --rating-- [[${skills.rating}]]</li>
+        <li th:inline="text">[[${skills.skillType}]] --rating-- [[${skills.rating}]]</li>
 
-</ul></div>
+    </ul></div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

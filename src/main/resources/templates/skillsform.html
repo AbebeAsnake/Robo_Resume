@@ -8,6 +8,12 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
+<ul   th:each="skills : ${skillsform}">
+
+    <li th:inline="text">[[${skills.skillType}]]  [[${skills.rating}]]</li>
+    <li> <a th:href="@{/updateS/{id}(id=${skills.id})}">Update</a></li>
+    <li> <a th:href="@{/deleteS/{id}(id=${skills.id})}">Delete</a></li>
+</ul>
 <form action="#"
       th:action="@{/posts}"
       th:object="${skills}"

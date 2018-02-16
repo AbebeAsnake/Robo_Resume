@@ -8,9 +8,17 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
+<ul   th:each="reference : ${referenceform}">
+
+    <li th:inline="text">[[${reference.firstName}]]  [[${reference.lastName}]]</li>
+    <li th:inline="text">[[${reference.email}]]  [[${reference.phoneNumber}]]</li>
+    <li> <a th:href="@{/updateR/{id}(id=${reference.id})}">Update</a></li>
+    <li> <a th:href="@{/deleteR/{id}(id=${reference.id})}">Delete</a></li>
+</ul>
 <form action="#" th:action="@{/refernce}" th:object="${reference}" method="post">
     <div class="control-group">
         <!-- Username -->
+        <input type="hidden" th:field="*{id}"/>
         <label class="control-label"  for="username">First Name </label>
         <div class="controls">
             <input type="text" th:field="*{firstName}" id="username" name="firstName" placeholder="" class="input-xlarge"/>
@@ -19,7 +27,6 @@
             <p class="help-block">First Name can contain any letters or numbers 3-20 charcters</p>
         </div>
     </div>
-
 
     <div class="control-group">
         <!-- Username -->
@@ -61,6 +68,7 @@
         </div>
     </div>
 </form>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

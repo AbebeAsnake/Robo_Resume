@@ -29,10 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/")
-                .access("hasAuthority('USER') or hasAuthority('ADMIN')")
-                .antMatchers("/admin").access("hasAuthority('ADMIN')")
+                .antMatchers("/h2-console/**","/index","/register","/").permitAll()
+                .antMatchers("/postp","poste","postw","posts","summary")
+                .access("hasAuthority('USER') ")
+                .antMatchers("/displayresume","coverletter").access("hasAuthority('ADMIN')or hasAuthority('USER')")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -40,7 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").permitAll()
+                .and()
                 .httpBasic();
+
+
         http
                 .csrf()
                 .disable();
@@ -59,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     }
-    @Override
+   /* @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception{
         auth.inMemoryAuthentication()
@@ -68,6 +74,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser("davewolf").password("beastmaster").authorities("ADMIN");
         auth
                 .userDetailsService(userDetailsServiceBean());
-    }
+    }*/
 
 }
