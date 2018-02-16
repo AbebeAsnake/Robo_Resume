@@ -55,9 +55,7 @@
             <label class="control-label"  for="phoneNumber">Phone Number </label>
             <div class="controls">
                 <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" class="input-xlarge"/>
-                <span th:if="${#fields.hasErrors('phoneNumber')}"
-                      th:errors="*{phoneNumber}"></span>
-                <p class="help-block">Numbers</p>
+
             </div>
         </div>
         <div class="control-group">
@@ -81,6 +79,17 @@
                 <p class="help-block"> Numbers</p>
             </div>
         </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="state">State </label>
+            <div class="controls">
+                <input type="text" th:field="*{state}" id="state" name="city" placeholder="state" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('state')}"
+                      th:errors="*{state}"></span>
+                <p class="help-block"> Numbers</p>
+            </div>
+        </div>
+
         <div class="control-group">
             <!-- Username -->
             <label class="control-label"  for="username">Zip Code </label>

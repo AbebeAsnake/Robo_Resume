@@ -23,6 +23,31 @@ public class References {
     @Email
     private String email;
 
+    public References() {
+        this.isShow = false;
+    }
+
+    public boolean getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(boolean show) {
+        isShow = show;
+    }
+
+    private boolean isShow;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+
+
+    }
+
+    private String phoneNumber;
+
     public long getId() {
         return id;
     }

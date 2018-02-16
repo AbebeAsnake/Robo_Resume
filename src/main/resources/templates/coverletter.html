@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<form action="#" th:action="@{/coverletter}" th:object="${cover}" method="post">
+    <div class="control-group">
+        <!-- Username -->
+        <label class="control-label"  for="title">Title </label>
+        <div class="controls">
+            <input type="text" th:field="*{title}" id="title" name="title" placeholder="" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('title')}"
+                  th:errors="*{title}"></span>
+            <p class="help-block">First Name can contain any letters or numbers 3-20 charcters</p>
+        </div>
+        <label class="control-label"  for="coverLetters">Copy or type here  </label>
+        <div class="controls">
+            <input type="text" th:field="*{coverLetters}" id="coverLetters" name="coverLetters" placeholder="" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('coverLetters')}"
+                  th:errors="*{coverLetters}"></span>
+            <p class="help-block">First Name can contain any letters or numbers 3-20 charcters</p>
+        </div>
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

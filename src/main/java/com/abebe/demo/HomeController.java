@@ -11,16 +11,21 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
+    ReferencesRepository referencesRepository;
+    @Autowired
     UserService userService;
     @Autowired
-    PersonRepository personRepository;
+    ApplicantRepository personRepository;
     @Autowired
     EducationRepository educationRepository;
     @Autowired
     WorkExperienceRepository workExperienceRepository;
     @Autowired
     SkillsRepository skillsRepository;
-
+    @Autowired
+    SummaryRepository summaryRepository;
+    @Autowired
+    CoverLetterRepository coverLetterRepository;
     @RequestMapping("/")
     public String addResume(Model model){
         model.addAttribute("person",personRepository.findAll());
@@ -32,11 +37,11 @@ public class HomeController {
 
     @GetMapping("/postp")
     public  String postProcess(Model model){
-        model.addAttribute("person",new References());
+        model.addAttribute("person",new Applicant());
         return "personform";
     }
     @PostMapping("/postp")
-    public  String processForm(@Valid @ModelAttribute References person, BindingResult result){
+    public  String processForm(@Valid @ModelAttribute Applicant person, BindingResult result){
         if(result.hasErrors()){
             return "personform";
         }
@@ -96,6 +101,48 @@ public class HomeController {
     public String showLogin(Model model){
         return "login";
     }
+    @GetMapping("/refernce")
+    public  String postReference(Model model){
+        model.addAttribute("reference",new References());
+        return "references";
+    }
 
+    @PostMapping("/refernce")
+    public  String processRefernces(@Valid @ModelAttribute References references, BindingResult result){
+        if(result.hasErrors()){
+            return "references";
+        }
+        referencesRepository.save(references);
+        return "redirect:/";
+    }
+
+    @GetMapping("/summary")
+    public  String postSummery(Model model){
+        model.addAttribute("summarys", new Summarys());
+        return "summary";
+    }
+
+    @PostMapping("/summary")
+    public  String processSummery(Summarys summary, BindingResult result){
+        if(result.hasErrors()){
+            return "summary";
+        }
+        summaryRepository.save(summary);
+        return "redirect:/";
+    }
+    @GetMapping("/coverletter")
+    public  String postCoverLetter(Model model){
+        model.addAttribute("cover", new CoverLetter());
+        return "coverletter";
+    }
+
+    @PostMapping("/coverletter")
+    public  String processSummery(CoverLetter coverLetter, BindingResult result){
+        if(result.hasErrors()){
+            return "coverletter";
+        }
+        coverLetterRepository.save(coverLetter);
+        return "redirect:/";
+    }
 
 }

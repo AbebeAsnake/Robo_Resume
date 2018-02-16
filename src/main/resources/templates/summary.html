@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th ="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -8,21 +8,24 @@
 </head>
 <body>
 <div th:replace="base :: navbar"></div>
-<form action="#"
-      th:action="@{/posts}"
-      th:object="${skills}"
-      method="post">
-    <input type="hidden" th:field="*{id}"/>
-    Skill<input type="text" th:field="*{skillType}"/><br/>
-    <span th:if="${#fields.hasErrors('skillType')}"
-          th:errors="*{skillType}"></span><br/>
-    <select name="rating" >
-        <option value="beginner" th:field="*{rating}">beginner</option>
-        <option value="intermediate" th:field="*{rating}">intermediate</option>
-        <option value="proficient" th:field="*{rating}">proficient</option>
-    </select>
+<form action="#" th:action="@{/summary}" th:object="${summarys}" method="post">
+    <div class="control-group">
+        <!-- Username -->
+        <label class="control-label"  for="summary">Summery </label>
+        <div class="controls">
+            <input type="text" th:field="*{summary}" id="summary" name="summary" placeholder="" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('summary')}"
+                  th:errors="*{summary}"></span>
+            <p class="help-block">First Name can contain any letters or numbers 3-20 charcters</p>
+        </div>
+        <div class="control-group">
+        <!-- Button -->
+        <div class="controls">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+    </div>
 
-    <input type="submit" value="Submit"/>
 </form>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

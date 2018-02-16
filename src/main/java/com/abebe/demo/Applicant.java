@@ -17,68 +17,46 @@ public class Applicant {
     @NotNull
     @Size(min=3,max = 20)
     private String firstName;
-    @NotNull
-    @Size(min=3, max = 20)
-    private String lastName;
-    @Email
-    private String email;
-    private String country;
 
-    public String getCountry() {
-        return country;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    private String phoneNumber;
-    private String Adress;
-
-    public void setAdress(String adress) {
-        Adress = adress;
-    }
-
-    public void setState(String state) {
-        State = state;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public void setZipCode(Long zipCode) {
         this.zipCode = zipCode;
     }
 
-    private String State ;
-
-    public String getAdress() {
-        return Adress;
+    public void setState(String state) {
+        State = state;
     }
-
-    public String getState() {
-        return State;
-    }
-
-    public String getCity() {
-        return City;
-    }
-
-    public Long getZipCode() {
-        return zipCode;
-    }
-
-    private String City;
-    private Long zipCode;
 
     public long getId() {
         return id;
@@ -96,19 +74,41 @@ public class Applicant {
         return email;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getCountry() {
+        return country;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getCity() {
+        return city;
     }
+
+    public Long getZipCode() {
+        return zipCode;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    @NotNull
+    @Size(min=3, max = 20)
+    private String lastName;
+    @Email
+    private String email;
+    private String country;
+    private String phoneNumber;
+    private String address;
+    private String city;
+    private Long zipCode;
+    private String State ;
+
+
 }

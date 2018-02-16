@@ -12,17 +12,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="/">
-            <img src="./images/logo.jpg" width="30" height="30" alt="Logo"/>
+            <img src="./images/logo.jpg" width="100" height="100" alt="Logo"/>
         </a>
-        <a class="navbar-brand" href="/poste">Education</a>
-        <!--<a class="navbar-brand" href="/postw">Work Experience</a>
-        <a class="navbar-brand" href="/posts">Skills</a>
-        <a class="navbar-brand" href="/postp">Refernces</a>
-        <a class="navbar-brand" href="/postp">Contact Information</a>-->
-
+        <a class="navbar-brand" href="/summary">Summary</a>
         <a class="navbar-brand" href="/postp">Contact Information</a>
-        <a class="navbar-brand" href="/postp">References</a>
+        <a class="navbar-brand" href="/poste">Education</a>
+        <a class="navbar-brand" href="/posts">Skills</a>
+        <a class="navbar-brand" href="/refernce">References</a>
         <a class="navbar-brand" href="/postw">Work Experience</a>
+
         <div class="collapse navbar-collapse justify-content-between" id="navbar2">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
@@ -30,8 +28,8 @@
                         Menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/search/{state}(state=borrowed)}">Completed Resume </a>
-                        <a class="dropdown-item" th:href="@{/search/{state}(state=available)}">Cover Letter</a>
+                        <a class="dropdown-item" th:href="@{/}">Completed Resume </a>
+                        <a class="dropdown-item" th:href="@{/coverletter}">Cover Letter</a>
 
                     </div>
                 </li>
