@@ -10,7 +10,7 @@
 <div th:replace="base :: navbar"></div>
 
 <p >Welcome to Resume Builder</p>
-<a th:href="@{/register}">Sign Up</a>
+
 <div th:each="person : ${person}">
     <span th:text="${person.firstName}"></span>
     <span th:text="${person.lastName}"></span><br/>

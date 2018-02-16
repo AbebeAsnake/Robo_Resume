@@ -103,12 +103,26 @@ public class Applicant {
     private String lastName;
     @Email
     private String email;
+    @NotNull
     private String country;
+    @NotNull
     private String phoneNumber;
+    @NotNull
     private String address;
+    @NotNull
     private String city;
+    @NotNull
     private Long zipCode;
+    @NotNull
     private String State ;
+    private String image;
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 
+    public String getImage() {
+        return image;
+
+    }
 }

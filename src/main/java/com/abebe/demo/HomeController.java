@@ -55,7 +55,7 @@ public class HomeController {
             return "personform";
         }
         personRepository.save(person);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
     @GetMapping("/poste")
     public  String postProcesseduForm(Model model){
@@ -70,7 +70,7 @@ public class HomeController {
             return "educationform";
         }
         educationRepository.save(education);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
     @GetMapping("/postw")
     public  String postProcesseWeForm(Model model){
@@ -86,7 +86,7 @@ public class HomeController {
         }
         workExperienceRepository.save(workexperience);
 
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
     @GetMapping("/posts")
     public  String postProcesseSkills(Model model){
@@ -102,7 +102,7 @@ public class HomeController {
             return "skillsform";
         }
         skillsRepository.save(skills);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
     @GetMapping("/register")
     public String showRegistration(Model model){
@@ -132,7 +132,7 @@ public class HomeController {
             return "references";
         }
         referencesRepository.save(references);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
     @GetMapping("/summary")
@@ -144,12 +144,12 @@ public class HomeController {
     }
 
     @PostMapping("/summary")
-    public  String processSummery(Summarys summary, BindingResult result){
+    public  String processSummery(@Valid @ModelAttribute Summarys summary, BindingResult result){
         if(result.hasErrors()){
             return "summary";
         }
         summaryRepository.save(summary);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
     @GetMapping("/coverletter")
     public  String postCoverLetter(Model model){
@@ -158,12 +158,12 @@ public class HomeController {
     }
 
     @PostMapping("/coverletter")
-    public  String processSummery(CoverLetter coverLetter, BindingResult result){
+    public  String processSummery(@Valid @ModelAttribute CoverLetter coverLetter, BindingResult result){
         if(result.hasErrors()){
             return "coverletter";
         }
         coverLetterRepository.save(coverLetter);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
 
@@ -179,7 +179,7 @@ public class HomeController {
         userService.saveUser(user);
         model.addAttribute("message", "User account successfully created");
 
-        return "redirect:/";
+        return "redirect:/displayresume";
 
     }
     @RequestMapping("update/{id}")
@@ -190,7 +190,7 @@ public class HomeController {
     @RequestMapping("/delete/{id}")
     public String delPersonInfo(@PathVariable("id") long id){
         personRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
     @RequestMapping("updateE/{id}")
@@ -201,7 +201,7 @@ public class HomeController {
     @RequestMapping("/deleteE/{id}")
     public String deleteEducation(@PathVariable("id") long id){
         educationRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
     @RequestMapping("updateS/{id}")
@@ -212,7 +212,7 @@ public class HomeController {
     @RequestMapping("/deleteS/{id}")
     public String deleteSkills(@PathVariable("id") long id){
         skillsRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
     @RequestMapping("updateR/{id}")
@@ -223,7 +223,7 @@ public class HomeController {
     @RequestMapping("/deleteR/{id}")
     public String deleteReference(@PathVariable("id") long id){
         referencesRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
     @RequestMapping("updateWE/{id}")
@@ -234,7 +234,7 @@ public class HomeController {
     @RequestMapping("/deleteWE/{id}")
     public String deleteWorkExperience(@PathVariable("id") long id){
         workExperienceRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/displayresume";
     }
 
 }

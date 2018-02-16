@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div th:replace="base :: navbar"></div>
+<a href="/login">Login</a>
 <h4> Applicant registration </h4>
 <form autocomplete="off" action="#" th:action="@{/register}" th:object="${registration}" method="post">
     First Name <mark><strong>

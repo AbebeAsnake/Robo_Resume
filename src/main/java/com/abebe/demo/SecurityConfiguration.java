@@ -29,10 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/h2-console/**","/index","/register","/").permitAll()
-                .antMatchers("/postp","poste","postw","posts","summary")
+                .antMatchers("/h2-console/**","/index","/register","/","/images","/css").permitAll()
+                .antMatchers("/postp","/poste","/postw","/posts","/summary","/refernce")
                 .access("hasAuthority('USER') ")
-                .antMatchers("/displayresume","coverletter").access("hasAuthority('ADMIN')or hasAuthority('USER')")
+                .antMatchers("/displayresume","/coverletter").access("hasAuthority('ADMIN') or hasAuthority('USER')")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -44,6 +44,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login").permitAll()
                 .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").permitAll().permitAll()
+                .and()
                 .httpBasic();
 
 
@@ -52,28 +56,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable();
         http
                 .headers().frameOptions().disable();
-       /* http
-                .authorizeRequests()
-                .antMatchers("/")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic();*/
+
 
 
     }
-   /* @Override
+   @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception{
         auth.inMemoryAuthentication()
                 .withUser("user").password("password").authorities("USER")
                 .and()
-                .withUser("davewolf").password("beastmaster").authorities("ADMIN");
+                .withUser("admin").password("password").authorities("ADMIN");
         auth
                 .userDetailsService(userDetailsServiceBean());
-    }*/
+    }
 
 }
