@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="list : ${job}">
+    <li th:text="${list.jobTitle}"></li>
+    <form th:action="@{/desiredskills}" th:method="post">
+        <td><button class="btn btn-default" name="id" th:value="${list.id}">add desired skills</button></td>
+    </form>
+
+</ul>
+<form></form>
+</body>
+</html>

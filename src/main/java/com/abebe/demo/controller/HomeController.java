@@ -1,12 +1,17 @@
-package com.abebe.demo;
+package com.abebe.demo.controller;
 
+import com.abebe.demo.model.*;
+import com.abebe.demo.repo.*;
+import com.abebe.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class HomeController {
@@ -26,6 +31,12 @@ public class HomeController {
     SummaryRepository summaryRepository;
     @Autowired
     CoverLetterRepository coverLetterRepository;
+    @Autowired
+    JobsRepository jobsRepository;
+    @Autowired
+    DesiredSkillsRepository desiredSkillsRepository;
+private long x;
+
     @RequestMapping("/")
     public String addResume(Model model){
 
@@ -235,6 +246,49 @@ public class HomeController {
     public String deleteWorkExperience(@PathVariable("id") long id){
         workExperienceRepository.delete(id);
         return "redirect:/displayresume";
+    }
+    @GetMapping("/addjob")
+    public  String addJobForm(Model model){
+        model.addAttribute("job", new Jobs());
+        return "addjob";
+    }
+
+    @PostMapping("/addjob")
+    public  String addJob( Jobs jobs, BindingResult result){
+        if(result.hasErrors()){
+            return "addjob";
+        }
+        jobsRepository.save(jobs);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/addqualification")
+    public  String lisJobs(Model model, Jobs job){
+        model.addAttribute("job", jobsRepository.findAll());
+        x =job.getId();
+        return "listjobs";
+    }
+   @GetMapping("/desired")
+    public String addQualification(Model model){
+        model.addAttribute("desired", new DesiredSkills());
+
+        return "adddesiredskills";
+   }
+
+    @PostMapping("/desiredskills")
+    public String desiredskill(HttpServletRequest request, Model model)
+    {
+        model.addAttribute("list",jobsRepository.findOne(new Long(request.getParameter("id"))));
+
+        return "adddesiredskills";
+    }
+    @RequestMapping("/desiredskills")
+    public String adddesired(DesiredSkills desired,BindingResult result){
+        if(result.hasErrors()){
+            return "adddesiredskills";
+        }
+        desiredSkillsRepository.save(desired);
+        return "redirect:/";
     }
 
 }

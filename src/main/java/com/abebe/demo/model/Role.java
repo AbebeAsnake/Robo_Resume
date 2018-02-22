@@ -1,4 +1,6 @@
-package com.abebe.demo;
+package com.abebe.demo.model;
+
+import com.abebe.demo.model.User;
 
 import javax.persistence.*;
 import java.util.Collection;

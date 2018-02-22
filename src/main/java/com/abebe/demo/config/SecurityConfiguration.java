@@ -1,5 +1,6 @@
-package com.abebe.demo;
+package com.abebe.demo.config;
 
+import com.abebe.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -29,10 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/h2-console/**","/index","/register","/","/images","/css").permitAll()
+                .antMatchers("/h2-console/**","/index","/register","/","/images","/css","/addjob","/addqualification/**","/qualififcationadd/**","/qualificationadd/**","/desired/**","/desiredprocess/**","/desiredskill/**","/desiredskills/**").permitAll()
                 .antMatchers("/postp","/poste","/postw","/posts","/summary","/refernce")
                 .access("hasAuthority('USER') ")
-                .antMatchers("/displayresume","/coverletter").access("hasAuthority('ADMIN') or hasAuthority('USER')")
+                .antMatchers("/displayresume","/coverletter").access("hasAuthority('APPLICANT') or hasAuthority('EMPLOYER')")
                 .anyRequest()
                 .authenticated()
                 .and()

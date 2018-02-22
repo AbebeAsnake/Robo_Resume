@@ -1,4 +1,4 @@
-package com.abebe.demo;
+package com.abebe.demo.model;
 
 import org.hibernate.validator.constraints.Email;
 

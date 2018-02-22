@@ -1,5 +1,6 @@
-package com.abebe.demo;
+package com.abebe.demo.repo;
 
+import com.abebe.demo.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User,Long> {
